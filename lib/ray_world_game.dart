@@ -11,7 +11,6 @@ import 'package:ray_world_game/world_collidable.dart';
 class RayWorldGame extends FlameGame with HasCollisionDetection {
   RayWorldGame() {
     Flame.images.prefix = "images/";
-    debugMode = true;
   }
 
   late Player _player;
