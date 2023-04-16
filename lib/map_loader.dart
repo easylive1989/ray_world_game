@@ -34,7 +34,7 @@ class MapLoader {
   static Future<List<Rect>> readRayWorldCollisionMap() async {
     final collidableRects = <Rect>[];
     final dynamic collisionMap = json.decode(
-        await rootBundle.loadString('rayworld_collision_map.json'));
+        await rootBundle.loadString('assets/rayworld_collision_map.json'));
 
     for (final data in collisionMap['objects']) {
       collidableRects.add(Rect.fromLTWH(
