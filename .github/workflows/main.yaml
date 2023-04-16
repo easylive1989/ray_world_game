@@ -10,7 +10,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable' # or: 'beta', 'dev' or 'master'
-      - run: flutter build web --web-renderer html
+      - run: flutter build web --web-renderer html --base-href "/ray_world_game/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
