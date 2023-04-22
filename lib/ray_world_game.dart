@@ -29,10 +29,10 @@ class RayWorldGame extends FlameGame with HasCollisionDetection {
   }
 
   void addWorldCollision() async {
-    (await MapLoader.readRayWorldCollisionMap()).forEach((rect) {
+    for (var rect in await MapLoader.readRayWorldCollisionMap()) {
       add(WorldCollidable(position: Vector2(rect.left, rect.top))
         ..width = rect.width
         ..height = rect.height);
-    });
+    }
   }
 }
