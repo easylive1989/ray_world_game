@@ -59,6 +59,8 @@ class Player extends SpriteAnimationGroupComponent<Direction>
       direction = Direction.left;
     } else if (keysPressed.contains(LogicalKeyboardKey.arrowRight)) {
       direction = Direction.right;
+    } else {
+      direction = Direction.none;
     }
     return super.onKeyEvent(event, keysPressed);
   }
