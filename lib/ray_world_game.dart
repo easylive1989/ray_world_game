@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:ray_world_game/direction.dart';
 import 'package:ray_world_game/map_loader.dart';
@@ -7,7 +8,7 @@ import 'package:ray_world_game/player.dart';
 import 'package:ray_world_game/world.dart';
 import 'package:ray_world_game/world_collidable.dart';
 
-class RayWorldGame extends FlameGame with HasCollisionDetection {
+class RayWorldGame extends FlameGame with HasCollisionDetection, HasKeyboardHandlerComponents {
   late Player _player;
   late World _world;
 

@@ -1,11 +1,13 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'direction.dart';
 
 class Player extends SpriteAnimationGroupComponent<Direction>
-    with HasGameRef, CollisionCallbacks {
+    with HasGameRef, CollisionCallbacks, KeyboardHandler {
   Player() : super(size: Vector2.all(50.0)) {
     add(RectangleHitbox());
   }
@@ -45,6 +47,20 @@ class Player extends SpriteAnimationGroupComponent<Direction>
   void onCollisionEnd(PositionComponent other) {
     super.onCollisionEnd(other);
     _collisionDirection = Direction.none;
+  }
+
+  @override
+  bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    if (keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
+      direction = Direction.up;
+    } else if (keysPressed.contains(LogicalKeyboardKey.arrowDown)) {
+      direction = Direction.down;
+    } else if (keysPressed.contains(LogicalKeyboardKey.arrowLeft)) {
+      direction = Direction.left;
+    } else if (keysPressed.contains(LogicalKeyboardKey.arrowRight)) {
+      direction = Direction.right;
+    }
+    return super.onKeyEvent(event, keysPressed);
   }
 
   @override
