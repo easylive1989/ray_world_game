@@ -21,6 +21,8 @@ class RayWorldGame extends FlameGame with HasCollisionDetection, HasKeyboardHand
     debugMode = true;
   }
 
+  Player get player => _player;
+
   @override
   Future<void> onLoad() async {
     super.onLoad();
@@ -33,7 +35,7 @@ class RayWorldGame extends FlameGame with HasCollisionDetection, HasKeyboardHand
     );
     var monster = Monster();
     add(monster);
-    monster.position = _world.size / 2;
+    monster.position = _world.size / 2 + Vector2(300, 300);
     addWorldCollision();
     add(Score());
   }

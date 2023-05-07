@@ -12,6 +12,7 @@ class Monster extends SpriteAnimationComponent with HasGameRef<RayWorldGame>, Co
     ));
   }
 
+  final double _speed = 150;
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
@@ -33,5 +34,14 @@ class Monster extends SpriteAnimationComponent with HasGameRef<RayWorldGame>, Co
         textureSize: Vector2(150, 150),
       ),
     );
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    var offset = gameRef.player.position - position;
+    var movePercentage = dt * _speed / offset.length ;
+
+    position += offset * movePercentage;
   }
 }
