@@ -3,6 +3,7 @@ import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ray_world_game/weapon.dart';
 
 import 'direction.dart';
 
@@ -16,6 +17,7 @@ class Player extends SpriteAnimationGroupComponent<Direction>
   Direction _collisionDirection = Direction.none;
 
   final double _playerSpeed = 300.0;
+  late final Weapon _weapon;
 
   @override
   Future<void> onLoad() async {
@@ -35,17 +37,20 @@ class Player extends SpriteAnimationGroupComponent<Direction>
       Direction.none: spriteSheet.createAnimation(row: 0, stepTime: 0.15, to: 1)
     };
     current = Direction.none;
+    add(_weapon = Weapon(position: size/2));
   }
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
+    if (other is Weapon) return;
     _collisionDirection = direction;
   }
 
   @override
   void onCollisionEnd(PositionComponent other) {
     super.onCollisionEnd(other);
+    if (other is Weapon) return;
     _collisionDirection = Direction.none;
   }
 
@@ -68,6 +73,7 @@ class Player extends SpriteAnimationGroupComponent<Direction>
   @override
   void update(double dt) {
     super.update(dt);
+    _weapon.angle += dt * 4;
     switch (direction) {
       case Direction.none:
         current = Direction.none;
