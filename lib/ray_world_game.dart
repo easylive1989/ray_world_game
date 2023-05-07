@@ -1,16 +1,25 @@
 import 'dart:ui';
 
+import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:ray_world_game/direction.dart';
 import 'package:ray_world_game/map_loader.dart';
+import 'package:ray_world_game/monster.dart';
 import 'package:ray_world_game/player.dart';
+import 'package:ray_world_game/score.dart';
 import 'package:ray_world_game/world.dart';
 import 'package:ray_world_game/world_collidable.dart';
 
 class RayWorldGame extends FlameGame with HasCollisionDetection, HasKeyboardHandlerComponents {
   late Player _player;
   late World _world;
+
+  int score = 0;
+
+  RayWorldGame() {
+    debugMode = true;
+  }
 
   @override
   Future<void> onLoad() async {
@@ -22,7 +31,11 @@ class RayWorldGame extends FlameGame with HasCollisionDetection, HasKeyboardHand
       _player,
       worldBounds: Rect.fromLTRB(0, 0, _world.size.x, _world.size.y),
     );
+    var monster = Monster();
+    add(monster);
+    monster.position = _world.size / 2;
     addWorldCollision();
+    add(Score());
   }
 
   void onJoypadDirectionChanged(Direction direction) {

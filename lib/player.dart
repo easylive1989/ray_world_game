@@ -3,6 +3,7 @@ import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ray_world_game/score.dart';
 import 'package:ray_world_game/weapon.dart';
 
 import 'direction.dart';
