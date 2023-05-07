@@ -6,6 +6,7 @@ import 'package:flame/game.dart';
 import 'package:ray_world_game/direction.dart';
 import 'package:ray_world_game/map_loader.dart';
 import 'package:ray_world_game/monster.dart';
+import 'package:ray_world_game/monster_generator.dart';
 import 'package:ray_world_game/player.dart';
 import 'package:ray_world_game/score.dart';
 import 'package:ray_world_game/world.dart';
@@ -16,10 +17,6 @@ class RayWorldGame extends FlameGame with HasCollisionDetection, HasKeyboardHand
   late World _world;
 
   int score = 0;
-
-  RayWorldGame() {
-    debugMode = true;
-  }
 
   Player get player => _player;
 
@@ -33,10 +30,8 @@ class RayWorldGame extends FlameGame with HasCollisionDetection, HasKeyboardHand
       _player,
       worldBounds: Rect.fromLTRB(0, 0, _world.size.x, _world.size.y),
     );
-    var monster = Monster();
-    add(monster);
-    monster.position = _world.size / 2 + Vector2(300, 300);
     addWorldCollision();
+    add(MonsterGenerator());
     add(Score());
   }
 
