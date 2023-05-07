@@ -10,6 +10,7 @@ class Score extends HudMarginComponent<RayWorldGame> {
 
   @override
   Future<void> onLoad() async {
+    super.onLoad();
     await add(_text = TextComponent(
       anchor: anchor,
       textRenderer: TextPaint(

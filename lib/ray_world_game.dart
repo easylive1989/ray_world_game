@@ -1,11 +1,9 @@
 import 'dart:ui';
 
-import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:ray_world_game/direction.dart';
 import 'package:ray_world_game/map_loader.dart';
-import 'package:ray_world_game/monster.dart';
 import 'package:ray_world_game/monster_generator.dart';
 import 'package:ray_world_game/player.dart';
 import 'package:ray_world_game/score.dart';

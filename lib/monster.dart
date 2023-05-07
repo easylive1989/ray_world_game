@@ -1,6 +1,5 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame/sprite.dart';
 import 'package:ray_world_game/ray_world_game.dart';
 import 'package:ray_world_game/weapon.dart';
 
